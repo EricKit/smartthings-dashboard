@@ -34,13 +34,13 @@
 				<div class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
 					<dt class="text-sm font-medium text-sky-500 truncate">Humidity</dt>
 					<dd class="mt-1 text-3xl font-semibold text-sky-900">
-						{humidity[0]?.value + humidity[0]?.unit}
+						{humidity[0]?.value + humidity[humidity.length - 1]?.unit}
 					</dd>
 				</div>
 				<div class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
 					<dt class="text-sm font-medium text-sky-500 truncate">Temperature</dt>
 					<dd class="mt-1 text-3xl font-semibold text-sky-900">
-						{temperature[0]?.value + temperature[0]?.unit}
+						{temperature[0]?.value + temperature[temperature.length - 1]?.unit}
 					</dd>
 				</div>
 			</dl>
