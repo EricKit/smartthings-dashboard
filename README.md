@@ -6,8 +6,8 @@ place the `.json` files in the `static` folder
 
 ---
 
-Gets the data from my nodeJS smartthings api project - uses a symbolic link to put the `.json` files in the static folder
+Gets the data from the nodeJS smartthings-log-api project.
 
-`ln -s ../smartthings-log-api/temperature.json static/temperature.json`
+I have `nginx` set-up to serve the .json files the project creates.
 
-https://github.com/EricKit/smartthings-log-api/blob/main/README.md
+<https://github.com/EricKit/smartthings-log-api/blob/main/README.md>

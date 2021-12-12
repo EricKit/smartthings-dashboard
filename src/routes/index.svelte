@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { domain } from '$lib/config';
 
 	type Reading = {
 		value: number;
@@ -11,9 +12,9 @@
 	let temperature: Reading[] = [];
 
 	onMount(async () => {
-		const humidityRes = await fetch('humidity.json');
+		const humidityRes = await fetch(`${domain}/humidity.json`);
 		humidity = await humidityRes.json();
-		const temperatureRes = await fetch('temperature.json');
+		const temperatureRes = await fetch(`${domain}/temperature.json`);
 		temperature = await temperatureRes.json();
 	});
 </script>
@@ -29,7 +30,7 @@
 
 	<div class="bg-sky-50 overflow-hidden sm:rounded-lg">
 		<div class="px-4 py-5 sm:p-6">
-			<h3 class="text-lg leading-6 font-medium text-sky-900">Current Values</h3>
+			<h3 class="text-lg leading-6 font-medium text-sky-900">Bedroom</h3>
 			<dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
 				<div class="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
 					<dt class="text-sm font-medium text-sky-500 truncate">Humidity</dt>
