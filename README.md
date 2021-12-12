@@ -2,12 +2,18 @@
 
 Creates a sveltekit dashboard
 
-place the `.json` files in the `static` folder
+Requires a config file in `src/lib` that looks like
+
+```{typescript}
+const domain = 'http://mydomain.com';
+
+export { domain };
+```
 
 ---
 
 Gets the data from the nodeJS smartthings-log-api project.
 
-I have `nginx` set-up to serve the .json files the project creates.
+I have `nginx` set-up to serve the .json files the project below creates.
 
-<https://github.com/EricKit/smartthings-log-api/blob/main/README.md>
+<https://github.com/EricKit/smartthings-log-api/>
