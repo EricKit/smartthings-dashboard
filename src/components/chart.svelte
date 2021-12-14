@@ -26,14 +26,12 @@
 
 	$: chartData = [...leftChartData, ...rightChartData];
 
-	$: console.log(chartData);
+	const yesterday = new Date();
+	yesterday.setDate(yesterday.getDate() - 1);
 </script>
 
 <LineChart
 	data={chartData}
-	on:update={(event) => {
-		console.log('I updated');
-	}}
 	options={{
 		title: 'Bedroom Temperature and Humidity',
 		axes: {
@@ -53,6 +51,14 @@
 				title: rightChartData[0]?.rightUnit ?? '',
 				correspondingDatasets: ['Right'],
 				includeZero: false
+			}
+		},
+		experimental: true,
+		zoomBar: {
+			top: {
+				initialZoomDomain: [yesterday.toISOString(), new Date()],
+				enabled: true,
+				type: 'slider_view'
 			}
 		},
 		curve: 'curveMonotoneX',

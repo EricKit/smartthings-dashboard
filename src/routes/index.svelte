@@ -6,7 +6,6 @@
 
 	let humidity: Reading[] = [];
 	let temperature: Reading[] = [];
-	console.log(humidity);
 	onMount(async () => {
 		const humidityRes = await fetch(`${domain}/humidity.json`);
 		const humidityJson = await humidityRes.json();
