@@ -1,33 +1,28 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { domain } from '$lib/config';
-
-	type Reading = {
-		value: number;
-		timestamp: Date;
-		unit: string;
-	};
+	import Header from '../components/header.svelte';
+	import Chart from '../components/chart.svelte';
 
 	let humidity: Reading[] = [];
 	let temperature: Reading[] = [];
-
+	console.log(humidity);
 	onMount(async () => {
 		const humidityRes = await fetch(`${domain}/humidity.json`);
-		humidity = await humidityRes.json();
+		const humidityJson = await humidityRes.json();
+		humidity = humidityJson.map((item) => {
+			return { ...item, timestamp: new Date(item.timestamp) };
+		});
 		const temperatureRes = await fetch(`${domain}/temperature.json`);
-		temperature = await temperatureRes.json();
+		const temperatureJson = await temperatureRes.json();
+		temperature = temperatureJson.map((item) => {
+			return { ...item, timestamp: new Date(item.timestamp) };
+		});
 	});
 </script>
 
 <div class="container mx-auto sm:px-6 lg:px-8">
-	<div class="md:flex md:items-center md:justify-between mt-4 mb-16">
-		<div class="flex-1 min-w-0">
-			<h2 class="text-2xl font-bold leading-7 text-sky-900 sm:text-3xl sm:truncate">
-				Kitaif Dashboard
-			</h2>
-		</div>
-	</div>
-
+	<Header />
 	<div class="bg-sky-50 overflow-hidden sm:rounded-lg">
 		<div class="px-4 py-5 sm:p-6">
 			<h3 class="text-lg leading-6 font-medium text-sky-900">Bedroom</h3>
@@ -45,6 +40,9 @@
 					</dd>
 				</div>
 			</dl>
+		</div>
+		<div class="p-8">
+			<Chart leftData={temperature} rightData={humidity} />
 		</div>
 	</div>
 </div>
