@@ -11,7 +11,7 @@
 			timestamp: item.timestamp.toISOString(),
 			leftUnit: item.unit,
 			leftValue: item.value,
-			group: 'Left'
+			group: 'Temperature'
 		};
 	});
 
@@ -20,7 +20,7 @@
 			timestamp: item.timestamp.toISOString(),
 			rightUnit: item.unit,
 			rightValue: item.value,
-			group: 'Right'
+			group: 'Humidity'
 		};
 	});
 
@@ -37,8 +37,8 @@
 		axes: {
 			left: {
 				mapsTo: 'leftValue',
-				title: leftChartData[0]?.leftUnit ?? '',
-				correspondingDatasets: ['Left'],
+				title: 'Degrees F',
+				correspondingDatasets: ['Temperature'],
 				includeZero: false
 			},
 			bottom: {
@@ -48,8 +48,8 @@
 			},
 			right: {
 				mapsTo: 'rightValue',
-				title: rightChartData[0]?.rightUnit ?? '',
-				correspondingDatasets: ['Right'],
+				title: '% Relative Humidity',
+				correspondingDatasets: ['Humidity'],
 				includeZero: false
 			}
 		},
