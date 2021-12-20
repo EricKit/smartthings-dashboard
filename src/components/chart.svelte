@@ -44,6 +44,7 @@
 <LineChart
 	data={chartData}
 	options={{
+		points: false,
 		title: 'Bedroom Temperature and Humidity',
 		axes: {
 			left: {
