@@ -6,15 +6,24 @@
 
 	let humidity: Reading[] = [];
 	let temperature: Reading[] = [];
+	let outsideTemperature: Reading[] = [];
+
 	onMount(async () => {
 		const humidityRes = await fetch(`${domain}/humidity.json`);
 		const humidityJson = await humidityRes.json();
 		humidity = humidityJson.map((item) => {
 			return { ...item, timestamp: new Date(item.timestamp) };
 		});
+
 		const temperatureRes = await fetch(`${domain}/temperature.json`);
 		const temperatureJson = await temperatureRes.json();
 		temperature = temperatureJson.map((item) => {
+			return { ...item, timestamp: new Date(item.timestamp) };
+		});
+
+		const outsideTemperatureRes = await fetch(`${domain}/outside-temperature.json`);
+		const outsideTemperatureJson = await outsideTemperatureRes.json();
+		outsideTemperature = outsideTemperatureJson.map((item) => {
 			return { ...item, timestamp: new Date(item.timestamp) };
 		});
 	});
@@ -41,7 +50,7 @@
 			</dl>
 		</div>
 		<div class="p-8">
-			<Chart leftData={temperature} rightData={humidity} />
+			<Chart leftData={temperature} leftDataTwo={outsideTemperature} rightData={humidity} />
 		</div>
 	</div>
 </div>

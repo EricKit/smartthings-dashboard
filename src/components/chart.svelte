@@ -5,6 +5,7 @@
 
 	export let leftData: Reading[] = [];
 	export let rightData: Reading[] = [];
+	export let leftDataTwo: Reading[] = [];
 
 	$: leftChartData = leftData.map((item) => {
 		return {
@@ -12,6 +13,15 @@
 			leftUnit: item.unit,
 			leftValue: item.value,
 			group: 'Temperature'
+		};
+	});
+
+	$: leftChartDataTwo = leftDataTwo.map((item) => {
+		return {
+			timestamp: item.timestamp.toISOString(),
+			leftUnit: item.unit,
+			leftValue: item.value,
+			group: 'Outside Temperature'
 		};
 	});
 
@@ -24,9 +34,10 @@
 		};
 	});
 
-	$: chartData = [...leftChartData, ...rightChartData];
+	$: chartData = [...leftChartData, ...leftChartDataTwo, ...rightChartData];
 
 	const yesterday = new Date();
+
 	yesterday.setDate(yesterday.getDate() - 1);
 </script>
 
@@ -38,7 +49,7 @@
 			left: {
 				mapsTo: 'leftValue',
 				title: 'Degrees F',
-				correspondingDatasets: ['Temperature'],
+				correspondingDatasets: ['Temperature', 'Outside Temperature'],
 				includeZero: false
 			},
 			bottom: {
