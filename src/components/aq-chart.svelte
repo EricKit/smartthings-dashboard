@@ -38,7 +38,7 @@
 		axes: {
 			left: {
 				mapsTo: 'leftValue',
-				title: 'PM 2.5 (µg/m^3)',
+				title: 'PM 2.5 (𝜇g/m³)',
 				correspondingDatasets: ['PM 2.5'],
 				includeZero: true,
 				thresholds: [
@@ -61,7 +61,7 @@
 			},
 			right: {
 				mapsTo: 'rightValue',
-				title: 'PM 10 (µg/m^3)',
+				title: 'PM 10 (𝜇g/m³)',
 				correspondingDatasets: ['PM 10'],
 				includeZero: true,
 				thresholds: [
