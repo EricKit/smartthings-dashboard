@@ -38,7 +38,7 @@
 		axes: {
 			left: {
 				mapsTo: 'leftValue',
-				title: 'µg/m^3',
+				title: 'PM 2.5 (µg/m^3)',
 				correspondingDatasets: ['PM 2.5'],
 				includeZero: true
 			},
@@ -49,7 +49,7 @@
 			},
 			right: {
 				mapsTo: 'rightValue',
-				title: 'µg/m^3',
+				title: 'PM 10 (µg/m^3)',
 				correspondingDatasets: ['PM 10'],
 				includeZero: true
 			}
