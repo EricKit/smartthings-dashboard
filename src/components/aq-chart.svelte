@@ -40,7 +40,19 @@
 				mapsTo: 'leftValue',
 				title: 'PM 2.5 (µg/m^3)',
 				correspondingDatasets: ['PM 2.5'],
-				includeZero: true
+				includeZero: true,
+				thresholds: [
+					{
+						value: 12,
+						label: 'Moderate PM 2.5',
+						fillColor: '#6929C4'
+					},
+					{
+						value: 35.5,
+						label: 'Unhealthy PM 2.5',
+						fillColor: '#6929C4'
+					}
+				]
 			},
 			bottom: {
 				title: 'Date',
@@ -51,7 +63,19 @@
 				mapsTo: 'rightValue',
 				title: 'PM 10 (µg/m^3)',
 				correspondingDatasets: ['PM 10'],
-				includeZero: true
+				includeZero: true,
+				thresholds: [
+					{
+						value: 50,
+						label: 'Moderate PM 10',
+						fillColor: '#009D9A'
+					},
+					{
+						value: 100,
+						label: 'Unhealthy PM 10',
+						fillColor: '#009D9A'
+					}
+				]
 			}
 		},
 		experimental: true,
