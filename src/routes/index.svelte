@@ -3,10 +3,12 @@
 	import { domain } from '$lib/config';
 	import Header from '../components/header.svelte';
 	import Chart from '../components/chart.svelte';
+	import AQChart from '../components/aq-chart.svelte';
 
 	let humidity: Reading[] = [];
 	let temperature: Reading[] = [];
 	let outsideTemperature: Reading[] = [];
+	let aq: AQ_Reading[] = [];
 
 	onMount(async () => {
 		const humidityRes = await fetch(`${domain}/humidity.json`);
@@ -25,6 +27,12 @@
 		const outsideTemperatureJson = await outsideTemperatureRes.json();
 		outsideTemperature = outsideTemperatureJson.map((item) => {
 			return { ...item, timestamp: new Date(item.timestamp) };
+		});
+
+		const aqRes = await fetch(`${domain}/air-quality.json`);
+		const aqResJson = await aqRes.json();
+		aq = aqResJson.map((item) => {
+			return { ...item, timestamp: new Date(item.timestamp), unit: 'µg/m^3' };
 		});
 	});
 </script>
@@ -61,6 +69,9 @@
 		</div>
 		<div class="p-8">
 			<Chart leftData={temperature} leftDataTwo={outsideTemperature} rightData={humidity} />
+		</div>
+		<div class="p-8">
+			<AQChart data={aq} />
 		</div>
 	</div>
 </div>
